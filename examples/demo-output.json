@@ -1,0 +1,37 @@
+[
+    {
+        "actorId":  "demo/healthy-scraper",
+        "verdict":  "ok",
+        "reasons":  [
+
+                    ],
+        "latestRunId":  "d1",
+        "latestItemCount":  500,
+        "runsChecked":  3,
+        "demo":  true
+    },
+    {
+        "actorId":  "demo/truncated-scraper",
+        "verdict":  "unhealthy",
+        "reasons":  [
+                        "Item count 40 is more than 50% below the recent median 500.",
+                        "Input maxItems=500 but only 40 items (possible early stop)."
+                    ],
+        "latestRunId":  "d4",
+        "latestItemCount":  40,
+        "runsChecked":  3,
+        "demo":  true
+    },
+    {
+        "actorId":  "demo/drifting-scraper",
+        "verdict":  "unhealthy",
+        "reasons":  [
+                        "Field \"price\" empty in all 20 sampled items.",
+                        "Fields no longer present: rating."
+                    ],
+        "latestRunId":  "d7",
+        "latestItemCount":  300,
+        "runsChecked":  2,
+        "demo":  true
+    }
+]
