@@ -1,0 +1,30 @@
+# Daily content check of your Apify scrapers. Copy to .github/workflows/scraper-health.yml in YOUR repository.
+# Needs: repository secret APIFY_TOKEN (read-only Apify token) and a file scraper-health-input.json
+# (same format as examples/input-basic.json, without apiToken: the token is injected from the secret).
+# The job fails when any checked Actor is "unhealthy" or "unknown" (could not be read, e.g. a bad token),
+# so GitHub's normal failure notification alerts you.
+name: scraper-health
+on:
+  schedule:
+    - cron: "30 6 * * *"   # daily 06:30 UTC; set it after your scrapers usually finish
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Scraper Output Guard
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          jq --arg t "$APIFY_TOKEN" '. + {apiToken: $t}' scraper-health-input.json |
+            curl -sS --fail -X POST \
+              -H "Authorization: Bearer $APIFY_TOKEN" -H "Content-Type: application/json" \
+              --data @- \
+              "https://api.apify.com/v2/acts/lineagersiui~scraper-output-guard/run-sync-get-dataset-items?timeout=240" \
+              -o verdicts.json
+          jq -r '.[] | "\(.verdict)\t\(.actorId)\t\(.reasons | join("; "))"' verdicts.json
+          test "$(jq '[.[] | select(.verdict == "unhealthy" or .verdict == "unknown")] | length' verdicts.json)" -eq 0
