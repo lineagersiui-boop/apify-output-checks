@@ -1,0 +1,13 @@
+{
+  "apiToken": "<your read-only Apify token>",
+  "actorIds": [
+    "your-username/your-scraper"
+  ],
+  "recentRuns": 10,
+  "minItems": 100,
+  "requiredFields": ["title", "price", "seller.name"],
+  "maxCountDropPercent": 30,
+  "maxNullRatePercent": 10,
+  "sampleSize": 500,
+  "alertsOnly": true
+}
