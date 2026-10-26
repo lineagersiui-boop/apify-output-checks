@@ -1,0 +1,7 @@
+{
+  "apiToken": "<your read-only Apify token>",
+  "actorIds": [
+    "your-username/your-scraper",
+    "your-username/another-scraper"
+  ]
+}
