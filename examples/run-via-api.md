@@ -1,6 +1,6 @@
 # Run via the Apify API
 
-Run the check synchronously and get the verdicts back in one call. `input.json` is one of the example inputs, with your read-only token filled in:
+Run the check synchronously and get the verdicts back in one call. `input.json` is one of the example inputs, with your limited-permission token filled in:
 
 ```bash
 curl -sS -X POST \
