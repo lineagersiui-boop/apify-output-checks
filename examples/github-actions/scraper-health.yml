@@ -1,5 +1,5 @@
 # Daily content check of your Apify scrapers. Copy to .github/workflows/scraper-health.yml in YOUR repository.
-# Needs: repository secret APIFY_TOKEN (read-only Apify token) and a file scraper-health-input.json
+# Needs: repository secret APIFY_TOKEN (an Apify token with limited read permissions) and a file scraper-health-input.json
 # (same format as examples/input-basic.json, without apiToken: the token is injected from the secret).
 # The job fails when any checked Actor is "unhealthy" or "unknown" (could not be read, e.g. a bad token),
 # so GitHub's normal failure notification alerts you.
