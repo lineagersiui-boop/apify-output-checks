@@ -48,7 +48,10 @@ Real output of the Actor's free demo (no token, built-in synthetic data): [`exam
 - [`examples/input-basic.json`](examples/input-basic.json) contains a token placeholder and Actor IDs, with default thresholds.
 - [`examples/input-strict.json`](examples/input-strict.json) adds required fields, tighter thresholds and problems-only output.
 
-The token field needs a personal Apify token with **read** access to the Actors, runs and datasets you want checked. Use a separate read-only token. It is sent only to `api.apify.com`, and the Actor doesn't log it or write it to its output.
+The token field needs an Apify API token that can read the Actors, runs, datasets and key-value stores you want checked. Apify tokens have full access by default, so create a separate token with limited permissions (read access to those Actors and their storages only). It is sent only to `api.apify.com`, and the Actor doesn't log it or write it to its output. The Actor also reads each checked run's input (from the run's key-value store), only to compare item limits such as `maxItems`. Only that limit number can appear in an early-stop reason; other input values are never written to the output.
+
+## Guide
+Want to build the check yourself first? [Catching silent scraper failures](guides/silent-scraper-failures/) compares Apify's free monitoring, a small DIY script and this Actor.
 
 ## Run it automatically
 1. **Apify Task and Schedule (no code).**
