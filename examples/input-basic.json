@@ -1,5 +1,5 @@
 {
-  "apiToken": "<your read-only Apify token>",
+  "apiToken": "<your Apify token with limited read permissions>",
   "actorIds": [
     "your-username/your-scraper",
     "your-username/another-scraper"
