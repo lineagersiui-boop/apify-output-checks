@@ -1,0 +1,27 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.lineagersiui-boop/sitemap-url-health-checker",
+  "title": "Sitemap URL Health Checker (via Apify MCP)",
+  "description": "Check sitemap URLs for 404s, redirects and noindex. One Apify Actor via Apify's hosted MCP server.",
+  "version": "1.0.0",
+  "websiteUrl": "https://apify.com/lineagersiui/sitemap-url-health-checker",
+  "repository": {
+    "url": "https://github.com/lineagersiui-boop/apify-output-checks",
+    "source": "github",
+    "subfolder": "mcp/sitemap-url-health-checker"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.apify.com/?tools=lineagersiui/sitemap-url-health-checker",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Your own Apify API token, sent as 'Bearer <apify-api-token>'. Runs are billed to your Apify account ($0.0005 per URL checked plus Apify platform usage).",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
